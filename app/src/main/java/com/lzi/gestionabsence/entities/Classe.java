@@ -1,5 +1,7 @@
 package com.lzi.gestionabsence.entities;
 
+import androidx.annotation.NonNull;
+
 public class Classe {
     private Long id;
     private String intitule;
@@ -29,4 +31,10 @@ public class Classe {
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
+
+    public String toJson(){
+        return "{ 'id': '"+id+"', 'intitule': '"+intitule+"'}";
+    }
+
+
 }

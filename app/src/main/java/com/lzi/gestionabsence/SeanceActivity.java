@@ -2,66 +2,61 @@ package com.lzi.gestionabsence;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.lzi.gestionabsence.DAO.ClasseDAO;
-import com.lzi.gestionabsence.adapters.ClasseAdapter;
 import com.lzi.gestionabsence.api.Constants;
 import com.lzi.gestionabsence.api.MySingleton;
 import com.lzi.gestionabsence.entities.Classe;
+import com.lzi.gestionabsence.entities.Seance;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ClasseActivity extends AppCompatActivity {
+public class SeanceActivity extends AppCompatActivity {
 
-    private List<Classe> classeList = new ArrayList<>();
-    private ListView listViewClasse;
-    private ClasseAdapter classeAdapter;
+    private ArrayList<Seance> seanceList = new ArrayList<>();
+    private static Classe classe = new Classe();
 
-    private ClasseDAO classeDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classe);
+        setContentView(R.layout.activity_seance);
 
-        listViewClasse = findViewById(R.id.lv_classe);
+        Intent intent = getIntent();
+        String sClasse = intent.getStringExtra("classe");
+        try {
+            JSONObject jsonObject = new JSONObject(sClasse);
+            classe.setId(jsonObject.getLong("id"));
+            classe.setIntitule(jsonObject.getString("intitule"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        classeDAO = new ClasseDAO(this);
-        //classeList = classeDAO.getAllClassesFromApi();
-
-        getAllClassesFromApi();
-
-        classeAdapter = new ClasseAdapter(this,classeList);
-        listViewClasse.setAdapter(classeAdapter);
     }
 
-    private void getAllClassesFromApi(){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.CLASSE_URL, new Response.Listener<String>() {
+    private void getAllSeancesFromApi() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.SEANCE_URL + "classe=" + classe.getId(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
 
-                    for (int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                        Classe classe = new Classe();
-
-                        classe.setId(jsonObject.getLong("id"));
-                        classe.setIntitule(jsonObject.getString("name"));
-
-                        classeList.add(classe);
+                        Seance seance = new Seance();
+                        String date = jsonObject.getString("date");
+                        seance.setDate_Seance(Date.valueOf(date));
+                        seanceList.add(seance);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -76,6 +71,4 @@ public class ClasseActivity extends AppCompatActivity {
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
     }
-
-
 }

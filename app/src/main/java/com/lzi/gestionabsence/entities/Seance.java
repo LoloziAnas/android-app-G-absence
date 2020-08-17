@@ -7,6 +7,9 @@ public class Seance {
     private Date date_Seance;
     private Classe classe;
 
+    public Seance(){
+
+    }
     public Seance(Long id, Date date_Seance, Classe classe) {
         this.id = id;
         this.date_Seance = date_Seance;
@@ -36,4 +39,6 @@ public class Seance {
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
+
+
 }

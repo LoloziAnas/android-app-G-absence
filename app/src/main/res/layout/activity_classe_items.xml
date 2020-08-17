@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        app:cardElevation="30dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_intitule"
+    app:cardElevation="5dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv_classe"
+    >
+        <LinearLayout
+            android:id="@+id/container_classe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:text="Master SIM"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:text="Classe"
+                android:padding="8dp"
+                style="@style/TextAppearance.AppCompat.Subhead"/>
+            <TextView
+                android:id="@+id/tv_intitule"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:padding="8dp"
+                android:text="Master SIM"/>
+
+
+        </LinearLayout>
+</androidx.cardview.widget.CardView>

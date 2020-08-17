@@ -14,28 +14,30 @@ import androidx.cardview.widget.CardView;
 import com.lzi.gestionabsence.R;
 import com.lzi.gestionabsence.SeanceActivity;
 import com.lzi.gestionabsence.entities.Classe;
+import com.lzi.gestionabsence.entities.Seance;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ClasseAdapter extends BaseAdapter  {
+public class SeanceAdapter extends BaseAdapter  {
 
     private Activity activity;
-    private List<Classe> classeList;
+    private ArrayList<Seance> seanceList;
     private LayoutInflater layoutInflater;
 
-    public ClasseAdapter(Activity activity, List<Classe> classeList) {
+    public SeanceAdapter(Activity activity, ArrayList<Seance> seanceList) {
         this.activity = activity;
-        this.classeList = classeList;
+        this.seanceList = seanceList;
     }
 
     @Override
     public int getCount() {
-        return classeList.size();
+        return seanceList.size();
     }
 
     @Override
-    public Classe getItem(int position) {
-        return classeList.get(position);
+    public Seance getItem(int position) {
+        return seanceList.get(position);
     }
 
     @Override
@@ -48,23 +50,16 @@ public class ClasseAdapter extends BaseAdapter  {
         if(layoutInflater == null)
             layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = layoutInflater.inflate(R.layout.activity_classe_items,null);
+            convertView = layoutInflater.inflate(R.layout.activity_seance_items,null);
 
-        TextView tv_intitule = convertView.findViewById(R.id.tv_intitule);
-        CardView cardView = convertView.findViewById(R.id.cv_classe);
+        TextView tv_dateSeance = convertView.findViewById(R.id.tv_seance_date);
 
-        final Classe classe = classeList.get(position);
-        tv_intitule.setText(classe.getIntitule());
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, SeanceActivity.class);
-                intent.putExtra("classe",classe.toJson());
-                activity.startActivity(intent);
-                activity.finish();
-            }
-        });
+        final Seance seance = seanceList.get(position);
+
+        tv_dateSeance.setText(seance.getDate_Seance().toString());
+
+
 
         return convertView;
     }

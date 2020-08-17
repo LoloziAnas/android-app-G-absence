@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GestionAbsence</string>
+    <string name="classe">Classe</string>
+    <string name="title_placeholder">Master SIM</string>
 </resources>
