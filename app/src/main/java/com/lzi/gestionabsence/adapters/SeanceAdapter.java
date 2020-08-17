@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.lzi.gestionabsence.AbsenceActivity;
 import com.lzi.gestionabsence.R;
 import com.lzi.gestionabsence.SeanceActivity;
 import com.lzi.gestionabsence.entities.Classe;
@@ -59,7 +60,16 @@ public class SeanceAdapter extends BaseAdapter  {
 
         tv_dateSeance.setText(seance.getDate_Seance().toString());
 
-
+        tv_dateSeance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity,AbsenceActivity.class );
+                intent.putExtra("id",seance.getId());
+                intent.putExtra("date",seance.getDate_Seance());
+                activity.startActivity(intent);
+                activity.finish();
+            }
+        });
 
         return convertView;
     }

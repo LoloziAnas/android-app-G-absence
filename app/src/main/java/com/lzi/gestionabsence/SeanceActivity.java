@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.lzi.gestionabsence.adapters.SeanceAdapter;
 import com.lzi.gestionabsence.api.Constants;
 import com.lzi.gestionabsence.api.MySingleton;
 import com.lzi.gestionabsence.entities.Classe;
@@ -23,13 +25,16 @@ import java.util.ArrayList;
 
 public class SeanceActivity extends AppCompatActivity {
 
+    private ListView listViewSeances;
     private ArrayList<Seance> seanceList = new ArrayList<>();
     private static Classe classe = new Classe();
-
+    private SeanceAdapter seanceAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seance);
+
+        listViewSeances = findViewById(R.id.lv_seances);
 
         Intent intent = getIntent();
         String sClasse = intent.getStringExtra("classe");
@@ -41,10 +46,14 @@ public class SeanceActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        getSeancesByClasse(classe.getId());
+        seanceAdapter = new SeanceAdapter(this,seanceList);
+
+
     }
 
-    private void getAllSeancesFromApi() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.SEANCE_URL + "classe=" + classe.getId(), new Response.Listener<String>() {
+    private void getSeancesByClasse(Long id) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.SEANCE_URL + "classe=" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

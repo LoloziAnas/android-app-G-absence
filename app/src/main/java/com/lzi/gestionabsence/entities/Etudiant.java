@@ -5,11 +5,16 @@ public class Etudiant {
     private String nom;
     private String prenom;
 
+    public  Etudiant(){
+
+    }
+
     public Etudiant(Long id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
     }
+
 
     public Long getId() {
         return id;
