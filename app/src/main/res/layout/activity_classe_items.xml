@@ -16,7 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
-                android:text="Classe"
+                android:text="@string/title_classe"
                 android:padding="8dp"
                 style="@style/TextAppearance.AppCompat.Subhead"/>
             <TextView
@@ -25,7 +25,13 @@
                 android:layout_height="match_parent"
                 android:textSize="20sp"
                 android:padding="8dp"
-                android:text="Master SIM"/>
+                android:text="@string/master_sim"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="N° d'etudaints: 24" />
 
 
         </LinearLayout>
