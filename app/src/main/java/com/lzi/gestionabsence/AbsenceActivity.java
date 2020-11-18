@@ -12,13 +12,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.lzi.gestionabsence.api.Constants;
 import com.lzi.gestionabsence.api.MySingleton;
 import com.lzi.gestionabsence.entities.Etudiant;
-import com.lzi.gestionabsence.entities.Seance;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class AbsenceActivity extends AppCompatActivity {
@@ -35,6 +33,8 @@ public class AbsenceActivity extends AppCompatActivity {
     }
 
     private void getEtudiantByClasse(Long id){
+
+        etudiantList.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.SEANCE_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

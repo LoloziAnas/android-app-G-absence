@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="Nom Complet: "
-            android:textColor="@color/primary_text"
+            android:textColor="@color/colorPrimaryText"
             android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="LOLOZI Anas"
-            android:textColor="@color/secondary_text"
+            android:textColor="@color/colorSecondaryText"
             android:textStyle="bold" />
     </LinearLayout>
 
