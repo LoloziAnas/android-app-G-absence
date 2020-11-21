@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">G-Absence</string>
+    <string name="app_name">e-absence</string>
     <string name="classe">Classes</string>
     <string name="title_placeholder">Master SIM</string>
     <string name="title_classe">Classe</string>
     <string name="master_sim">Master SIM</string>
+    <string name="rechercher">Rechercher</string>
+    <string name="ajouter">Ajouter</string>
 </resources>

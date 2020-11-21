@@ -4,7 +4,8 @@ public class Etudiant {
     private Long id;
     private String nom;
     private String prenom;
-
+    private int photo;
+    private boolean isSelected;
     public  Etudiant(){
 
     }
@@ -39,4 +40,5 @@ public class Etudiant {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
 }

@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/item_rechercher"
-        android:title="Rechercher"
+        android:title="@string/rechercher"
         app:showAsAction="always"
         android:icon="@drawable/ic_search"
 
         />
     <item
         android:id="@+id/item_ajouter"
-        android:title="Ajouter"
+        android:title="@string/ajouter"
         app:showAsAction="always"
         android:icon="@drawable/ic_add"
 
